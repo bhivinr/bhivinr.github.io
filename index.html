@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vinay Bhimavarapu - Mechanical Engineering</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32-dark.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512-dark.png">
+<link rel="apple-touch-icon" href="favicon-512-cyan.png">
+<meta name="description" content="Mechanical engineering student at UVA. Robotics research, control systems, and hardware design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#08191F;
+  --panel:#0E2830;
+  --line:#1C4450;
+  --paper:#E9EFEC;
+  --mist:#94AEB5;
+  --cyan:#5FD4DE;
+  --magenta:#FF4F92;
+
+  --display:"Archivo",system-ui,sans-serif;
+  --body:"Newsreader",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --gut:clamp(1.25rem,5vw,5rem);
+  --maxw:1240px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:clamp(1rem,0.95rem + 0.2vw,1.125rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--mist);
+  margin:0;
+}
+.h2{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 118,"wght" 780;
+  font-size:clamp(1.6rem,1.1rem + 2vw,2.5rem);
+  line-height:1.02;
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+  margin:.5rem 0 0;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(8,25,31,.82);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{
+  display:flex;align-items:center;gap:1.5rem;
+  height:60px;
+}
+.mark{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 125,"wght" 800;
+  letter-spacing:.02em;
+  font-size:.95rem;
+  text-decoration:none;
+  margin-right:auto;
+}
+.navlinks{display:flex;gap:1.4rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.navlinks a{color:var(--mist);text-decoration:none;transition:color .2s}
+.navlinks a:hover{color:var(--paper)}
+.navlinks a.cv{color:var(--cyan)}
+@media(max-width:600px){.navlinks a:not(.cv){display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#midline{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:.55;pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:2;padding-top:clamp(4rem,12vh,8rem);padding-bottom:clamp(3rem,8vh,5rem)}
+.name{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 122,"wght" 820;
+  font-size:clamp(2.6rem,1rem + 9vw,7rem);
+  line-height:.9;
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  margin:1.5rem 0 0;
+}
+.name span{display:block}
+.name .last{color:var(--cyan)}
+.tag{
+  font-family:var(--body);
+  font-size:clamp(1.05rem,1rem + .6vw,1.5rem);
+  color:var(--paper);
+  max-width:34ch;
+  margin:1.5rem 0 0;
+  line-height:1.45;
+}
+.tag em{font-style:normal;color:var(--magenta)}
+
+.facts{
+  display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;
+  margin-top:2.5rem;padding-top:1.1rem;
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--mist);
+}
+.facts b{color:var(--paper);font-weight:500}
+
+/* ---------- sections ---------- */
+section{padding:clamp(3.5rem,9vh,6rem) 0}
+.sechead{margin-bottom:3rem;max-width:52ch}
+.sechead p.lede{color:var(--mist);margin:.9rem 0 0;font-size:1rem}
+
+/* ---------- project ---------- */
+.proj{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:clamp(1.5rem,4vw,3.5rem);
+  align-items:start;
+  padding:clamp(2rem,5vh,3rem) 0;
+  border-top:1px solid var(--line);
+}
+.proj:last-of-type{border-bottom:1px solid var(--line)}
+.proj.flip .media{order:2}
+@media(max-width:860px){
+  .proj{grid-template-columns:1fr;gap:1.5rem}
+  .proj.flip .media{order:0}
+}
+
+.media{display:grid;gap:.5rem}
+.slot{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+.slot img,.slot video{width:100%;height:100%;object-fit:cover}
+.slot::after{
+  content:attr(data-hint);
+  position:absolute;inset:0;
+  display:none;
+  align-items:center;justify-content:center;
+  padding:1rem;text-align:center;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mist);
+  background:repeating-linear-gradient(45deg,transparent,transparent 9px,rgba(28,68,80,.35) 9px,rgba(28,68,80,.35) 10px);
+}
+.slot.missing::after{display:flex}
+.slot.missing img,.slot.missing video{opacity:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.pair .slot{aspect-ratio:1/1}
+.slot.wide{aspect-ratio:16/9}
+
+.withheld{
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:1.5rem;
+  font-family:var(--mono);font-size:.72rem;line-height:1.7;letter-spacing:.05em;
+  color:var(--mist);
+}
+.withheld strong{display:block;color:var(--paper);letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:.5rem}
+.withheld.note{padding:.9rem 1.1rem;font-size:.68rem}
+.pmeta{
+  display:flex;flex-wrap:wrap;gap:.35rem .9rem;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--magenta);
+}
+.pmeta span:not(:last-child)::after{content:" /";color:var(--line);margin-left:.9rem}
+.ptitle{
+  font-family:var(--display);
+  font-variation-settings:"wdth" 110,"wght" 720;
+  font-size:clamp(1.35rem,1.1rem + 1.1vw,1.95rem);
+  line-height:1.08;letter-spacing:-.015em;
+  margin:.7rem 0 0;
+}
+.proj p{margin:1rem 0 0;color:#CBD9DA}
+.proj p:first-of-type{color:var(--paper)}
+
+/* readout strip — the instrument line */
+.readout{
+  margin-top:1.6rem;
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+}
+.readout div{
+  padding:.85rem .9rem .85rem 0;
+  border-bottom:1px solid var(--line);
+}
+.readout dt{
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);
+  margin:0 0 .3rem;
+}
+.readout dd{
+  margin:0;
+  font-family:var(--display);
+  font-variation-settings:"wdth" 100,"wght" 600;
+  font-size:1rem;line-height:1.25;
+}
+.readout dd .u{color:var(--cyan);font-size:.75em}
+
+.plinks{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:1.2rem}
+.plinks a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(95,212,222,.35);padding-bottom:2px;
+  transition:border-color .2s;
+}
+.plinks a:hover{border-color:var(--cyan)}
+
+/* ---------- toolbox ---------- */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.tools div{background:var(--ink);padding:1.4rem}
+.tools h3{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);
+  margin:0 0 .8rem;font-weight:500;
+}
+.tools ul{margin:0;padding:0;list-style:none;font-family:var(--display);font-variation-settings:"wdth" 100,"wght" 500;font-size:.95rem;line-height:1.9}
+
+/* ---------- about / contact ---------- */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+@media(max-width:860px){.about{grid-template-columns:1fr}}
+.about p{margin:1.1rem 0 0}
+.about p:first-of-type{margin-top:0;font-size:1.15rem}
+.portrait{border:1px solid var(--line);background:var(--panel);aspect-ratio:1/1;overflow:hidden;margin-bottom:1rem}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.contact{border:1px solid var(--line);background:var(--panel);padding:1.6rem}
+.contact a{
+  display:block;padding:.75rem 0;text-decoration:none;
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.05em;
+  transition:color .2s;
+}
+.contact a:last-child{border-bottom:0}
+.contact a:hover{color:var(--cyan)}
+.contact a small{display:block;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);margin-bottom:.25rem}
+
+footer{border-top:1px solid var(--line);padding:2rem 0 3rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+
+/* ---------- a11y ---------- */
+:focus-visible{outline:2px solid var(--magenta);outline-offset:3px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;z-index:99;background:var(--paper);color:var(--ink);padding:.6rem 1rem;font-family:var(--mono);font-size:.75rem}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top">VB</a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#toolbox">Toolbox</a>
+      <a href="#about">About</a>
+      <a class="cv" href="resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg id="midline" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="wrap">
+    <p class="eyebrow">Mechanical Engineering · University of Virginia</p>
+    <h1 class="name"><span>Vinay</span><span class="last">Bhimavarapu</span></h1>
+    <p class="tag">Mechanical engineer working in robotics, controls, and hardware design.</p>
+    <div class="facts">
+      <span>B.S. ME <b>May 2028</b></span>
+      <span>GPA <b>3.7</b></span>
+      <span>Now at <b>BIER Labs</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="sechead">
+      <h2 class="h2">Projects</h2>
+    </div>
+
+    <!-- Tunabot -->
+    <article class="proj">
+      <div class="media">
+        <div class="slot" data-hint="tunabot-swim.mp4 — swim-test clip">
+          <video src="tunabot-swim.mp4" poster="tunabot-poster.png" muted loop playsinline autoplay></video>
+        </div>
+        <div class="pair">
+          <div class="slot" data-hint="tunabot-build.jpg">
+            <img src="tuna_in_hand.png" alt="Tunabot platform on the bench during assembly">
+          </div>
+          <div class="slot" data-hint="tunabot-cad.jpg">
+            <img src="tuna_swimming.png" alt="SolidWorks model of a Tunabot subassembly">
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <div class="pmeta"><span>BIER Labs</span><span>Robotics Research Intern</span><span>Oct 2024 — Present</span></div>
+        <h3 class="ptitle">Tunabot: a bio-inspired robotic swimmer</h3>
+        <p>The Tunabot is a free-swimming robotic fish designed to achieve the speed and energy efficiency of a real tuna fish. I design and fabricate components for two of the platform's robotic units in SolidWorks, printing on FDM and applying design-for-manufacturing rules so a failed part can be redesigned and back in the water the same week.</p>
+        <p>On the software side I write the Python control stack that drives the platform, and the analysis that scores it: DeepLabCut pose estimation to recover swimming kinematics from video, plus remote operation over Tailscale so tests can be run efficiently. I work with a labmate on ongoing experiments in autonomous swimming behavior.</p>
+        <p>In January 2026 I presented this work at SICB — the Society for Integrative and Comparative Biology annual meeting — as the sole presenter on a talk, <em>Investigating the Effect of Streamwise Vortex Impingement on the Performance of a Free-Swimming Tuna-Like Robot.</em> The question was whether a robot swimming entirely free, with no tether and no rail, can save energy by riding in the wake of another body the way a real fish does. Holding that position is the obstacle: run blind in a water channel, the Tunabot drifts into either the bluff body or the channel wall. I mounted an ArUco marker on the bluff body and used it as the reference for a vision-based controller, so the robot senses where it sits relative to the obstacle and corrects — which is what made power measurements across the wake possible at all. Even paying the energetic cost of that control, the robot comes out ahead. The paper is in progress. The work is funded by the Office of Naval Research under a MURI program on the hydrodynamics of fish schools.</p>
+
+        <div class="plinks">
+          <a href="https://www.xcdsystem.com/sicb/program/ddC9FQp/index.cfm?pgid=2696&amp;sid=50843&amp;abid=165433" target="_blank" rel="noopener">SICB 2026 abstract ↗</a>
+        </div>
+      </div>
+    </article>
+
+   <!-- Spiro -->
+    <article class="proj flip">
+      <div class="media">
+        <div class="slot wide" data-hint="spiro-fixture-v2.jpg">
+          <img src="spiro-fixture-v2.jpg" alt="Stepper drive, shaft coupler, and extruded-aluminum frame of the Lead Bend Fatigue Tester">
+        </div>
+        
+      </div>
+      <div class="copy">
+        <div class="pmeta"><span>Spiro Medical</span><span>Engineering Intern</span><span>May — Jul 2026</span></div>
+        <h3 class="ptitle">Lead Bend Fatigue Tester</h3>
+        <p>A benchtop fixture that cyclically bends implantable spinal leads to 45° and 90° through bell-mouth inserts, compressing years of in-vivo spinal motion into a test that runs in days. I assembled, programmed, and troubleshot the tester, then reorganized its top-level assembly — 25 CAD files and 16 drawings — in SolidWorks.</p>
+        <p>Qualifying it was the other half. I authored the fixture's DCO, IOQ, and BOM and built out its part and assembly records in Arena PLM — the work that makes a fixture's output traceable instead of just plausible. I also handled calibration infrastructure on the lab side: 60+ test equipment items created in Arena, plus a Power Automate checkout system tracking custody, location, and calibration due-status across 80 instruments.</p>
+      </div>
+    </article>
+
+     <!-- Allevion -->
+    <article class="proj">
+      <div class="media">
+        <div class="slot" data-hint="allevion.jpg">
+          <img src="allevion.jpg" alt="The Allevx wrist-worn neuromodulation device, capsule seated in its band">
+        </div>
+        <div class="withheld note">
+          Product image courtesy Allevion Therapeutics. My concept models for the charging and reattachment mechanism are unpublished.
+        </div>
+      </div>
+      <div class="copy">
+        <div class="pmeta"><span>Allevion Therapeutics</span><span>Design Intern</span><span>Jul — Aug 2025</span></div>
+        <h3 class="ptitle">Miniaturized electromechanical component</h3>
+        <p>Allevion's Allevx is a wrist-worn neuromodulation device for essential tremor. That puts the charging routine in an awkward spot: unstrap, dock, restrap is a fine-motor task, and the hand doing it is the one with the tremor. The brief was to get the capsule off, charged, and back on the band without demanding the dexterity the device exists to compensate for. I modeled three concepts in SolidWorks against a wristband base connector I couldn't change: a magnetic dock; a capsule that locks onto a button and tabs on the existing connector; and a U-shaped holder the capsule enters from the side and snaps closed around. They differ mainly in how much alignment the user's hand has to supply. Magnetic engagement is self-correcting and forgiving of a shaky approach, but retains the weakest. The button-and-tab lock retains best and asks for the most precision. The U-holder converts the motion into a lateral slide the holder itself constrains. I presented all three with CAD models at the end of the internship. I also maintained the device's component and assembly CAD — the master files, not just my own concept work.</p>
+      </div>
+    </article>
+
+    <!-- Teams -->
+    <article class="proj flip">
+      <div class="media">
+        <div class="pair">
+          <div class="slot" data-hint="mars.jpg"><img src="mars.jpg" alt="MARS competition robot"></div>
+          <div class="slot" data-hint="frc.jpg"><img src="frc.jpg" alt="FIRST Robotics competition robot"></div>
+        </div>
+      </div>
+      <div class="copy">
+        <div class="pmeta"><span>MARS @ UVA</span><span>FIRST Robotics</span><span>Competition teams</span></div>
+        <h3 class="ptitle">Robots on a deadline</h3>
+        <p>With the Mechatronic and Robotics Society at UVA I sit on the mechanical subteam of a 20–30 person build, contributing CAD design and physical assembly of the competition robot. I worked on one of three competing concepts for the excavation subsystem — a bucket drum, which the team selected and built. Before that, FIRST Robotics — mechanical subteam of a 15-member crew, designing and building to a fixed competition date.</p>
+        
+        
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= TOOLBOX ================= -->
+<section id="toolbox">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Toolbox</p>
+      <h2 class="h2">What I work in</h2>
+    </div>
+    <div class="tools">
+      <div>
+        <h3>Fabrication &amp; lab</h3>
+        <ul><li>3D printing (FDM)</li><li>Soldering</li><li>Electronic assembly</li><li>Prototyping</li></ul>
+      </div>
+      <div>
+        <h3>CAD &amp; design</h3>
+        <ul><li>SolidWorks</li><li>Fusion 360</li><li>Design for manufacturing</li></ul>
+      </div>
+      <div>
+        <h3>PLM &amp; automation</h3>
+        <ul><li>Arena PLM</li><li>Power Automate</li><li>DCO / IOQ / BOM</li></ul>
+      </div>
+      <div>
+        <h3>Programming</h3>
+        <ul><li>Python</li><li>C++</li><li>Java</li><li>Flutter</li></ul>
+      </div>
+      <div>
+        <h3>Vision &amp; tracking</h3>
+        <ul><li>ArUco markers</li><li>DeepLabCut</li><li>Tailscale remote ops</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sechead">
+       <h2 class="h2">About Me</h2>
+    </div>
+    <div class="about">
+      <div>
+        <p>I've been on the same robot for two years, and that's deliberate. I like knowing one system well enough that a new question doesn't mean starting over — the Tunabot has taken me from CAD and FDM printing into control code, video-based kinematics, and my first conference presentation, with a paper in progress. The biomimetics is the part I'd have chosen anyway. I read about animals for fun, and a machine built to swim the way a tuna swims is the most interesting kind of design problem I know: the benchmark already exists, and it's still better than what we've built.</p>
+        <p>When something doesn't work I go wide before I go deep — every cause that could produce the symptom, ruled out one at a time. My first pass at a build is the version that does the job in front of me, not the version I'd defend forever; making it work is what tells me which parts were worth perfecting.</p>
+        <p>A summer in medical devices taught me when that instinct has to switch off. I went in expecting to care about the fixture and came out caring about what stands behind a number: the revision history, the qualification, the calibration record. A result nobody can reproduce isn't a result yet. Knowing which of those two modes a problem calls for turns out to be most of the judgment.</p>
+        <p>Away from the bench: movies, table tennis, and teaching myself to draw, which is going better than I expected.</p>
+        <p>A tuna is a control problem with a body attached, and that's the work I want to keep doing — I'm looking for a summer 2027 internship in defense, aerospace, or autonomous systems.</p>
+        <p class="eyebrow" style="margin-top:2rem">Also published</p>
+        <div class="plinks" style="margin-top:.7rem">
+          <a href="https://doi.org/10.47611/jsrhs.v12i3.4780">Journal of Student Research — generative AI &amp; productivity ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="portrait">
+          <img src="portrait.jpg" alt="Vinay Bhimavarapu">
+        </div>
+        <div class="contact">
+          <a href="mailto:bhivinr@gmail.com"><small>Email</small>bhivinr@gmail.com</a>
+          <a href="http://www.linkedin.com/in/vinay-bhimavarapu-57657720b"><small>LinkedIn</small>/in/vinay-bhimavarapu ↗</a>
+          <a href="resume.pdf" target="_blank" rel="noopener"><small>Resume</small>View PDF ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Vinay Bhimavarapu — Herndon, VA</span>
+    <span>Last updated August 2026</span>
+  </div>
+</footer>
+
+<script>
+/* Hero backdrop: overlaid body-midline traces, the standard figure used to show
+   how a swimming fish's body wave travels tail-ward. One trace animates. */
+(function(){
+  var svg = document.getElementById('midline');
+  if(!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var GHOSTS = 9, PTS = 90, W = 1000, H = 500, MID = 250;
+
+  // amplitude envelope: near zero at the head, growing toward the tail
+  function amp(s){ return 6 + 104 * Math.pow(s, 2.1); }
+  function trace(phase){
+    var d = '', i, s, x, y;
+    for(i = 0; i <= PTS; i++){
+      s = i / PTS;
+      x = 60 + s * (W - 120);
+      y = MID + amp(s) * Math.sin(2 * Math.PI * (s * 1.15 - phase));
+      d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    return d;
+  }
+
+  var g = document.createElementNS(NS, 'g');
+  svg.appendChild(g);
+
+  for(var i = 0; i < GHOSTS; i++){
+    var t = i / (GHOSTS - 1);
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', trace(t * 0.5));
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke-width', '1.25');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke', t < 0.5 ? '#5FD4DE' : '#FF4F92');
+    p.setAttribute('stroke-opacity', (0.10 + 0.16 * (1 - Math.abs(t - 0.5) * 2)).toFixed(3));
+    g.appendChild(p);
+  }
+
+  var lead = document.createElementNS(NS, 'path');
+  lead.setAttribute('fill', 'none');
+  lead.setAttribute('stroke', '#5FD4DE');
+  lead.setAttribute('stroke-width', '2.25');
+  lead.setAttribute('stroke-linecap', 'round');
+  lead.setAttribute('stroke-opacity', '0.75');
+  lead.setAttribute('d', trace(0));
+  svg.appendChild(lead);
+
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if(still.matches) return;
+
+  var t0 = null;
+  function frame(ts){
+    if(t0 === null) t0 = ts;
+    lead.setAttribute('d', trace(((ts - t0) / 3600) % 1));
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* Media slots degrade into labelled placeholders until the real files land. */
+(function(){
+  document.querySelectorAll('.slot img, .slot video').forEach(function(el){
+    var flag = function(){ el.closest('.slot').classList.add('missing'); };
+    el.addEventListener('error', flag);
+    if(el.tagName === 'IMG' && el.complete && el.naturalWidth === 0) flag();
+  });
+})();
+</script>
+
+</body>
+</html>
